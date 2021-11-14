@@ -8,13 +8,25 @@ namespace MoodAnalyzerProblem
 {
     public class MoodAnalyzer
     {
-        public string analyseMood(string message)
+        public string message;
+        public MoodAnalyzer(string message)//parametized constructor.
         {
-            if (message.Contains("Sad"))
+            this.message = message;
+        }
+        public string analyseMood()//this method will become as no parameter.
+        {
+            try
             {
-                return "SAD";
+                if (message.Contains("Sad"))
+                {
+                    return "SAD";
+                }
+                else
+                {
+                    return "HAPPY";
+                }
             }
-            else
+            catch(NullReferenceException ex)
             {
                 return "HAPPY";
             }
