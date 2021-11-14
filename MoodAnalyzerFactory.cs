@@ -10,9 +10,18 @@ namespace MoodAnalyzerProblem
 {
     class MoodAnalyzerFactory
     {
+        /// <summary>
+        /// Creates the mood analyser object.
+        /// </summary>
+        /// <param name="className">Name of the class.</param>
+        /// <param name="constructor">The constructor.</param>
+        /// <returns></returns>
+        /// UC4 
+        /// default constructor         
+        /// </exception>
         public object createMoodAnalyserObject(string className, String constructor)
         {
-            string pattern = "." + constructor + "$";
+            string pattern = @"." + constructor + "$";
             Match result = Regex.Match(className, pattern);
 
             if (result.Success)
@@ -35,6 +44,48 @@ namespace MoodAnalyzerProblem
                 throw new CustomException(CustomException.ExceptionType.CONSTRUCTOR_NOT_FOUND, "constructor not found");
             }
         }
+
+        /// <summary>
+        /// Reflection UC5 using parameter constructor
+        /// Creates the mood analyser parameter object.
+        /// </summary>
+        /// <param name="className">Name of the class.</param>
+        /// <param name="constructor">The constructor.</param>
+        /// <param name="message">The message.</param>
+
+        public object CreateMoodAnalyserParameterObject(string className, string constructor, string message)
+        {
+            try
+            {
+                Type tyep = typeof(MoodAnalyzer);
+                if (tyep.Name.Equals(className) || tyep.FullName.Equals(className))
+                {
+                    if (tyep.Name.Equals(constructor))
+                    {
+                        ConstructorInfo constructorInfo = tyep.GetConstructor(new[] { typeof(string) });
+                        var obj = constructorInfo.Invoke(new object[] { message });
+                        return obj;
+                    }
+                    else
+                    {
+                        throw new CustomException(CustomException.ExceptionType.CONSTRUCTOR_NOT_FOUND, "constructor not found");
+                    }
+                }
+                else
+                {
+                    throw new CustomException(CustomException.ExceptionType.Class_Not_Found, "class not found");
+
+                }
+
+
+            }
+
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
     }
 }  
 

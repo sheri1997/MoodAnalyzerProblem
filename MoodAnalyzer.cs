@@ -13,6 +13,10 @@ namespace MoodAnalyzerProblem
         {
             this.message = message;
         }
+        public MoodAnalyzer()
+        {
+            Console.WriteLine("default constructor");
+        }
         public string analyseMood()//this method will become as no parameter.
         {
             try
