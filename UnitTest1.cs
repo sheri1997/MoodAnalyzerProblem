@@ -10,8 +10,8 @@ namespace MoodAnalyzerMSTest
         public void TestMethod1()
         {
             MoodAnalyzer mood = new MoodAnalyzer();
-            string message = "I am in Sad Mood";
-            string expectedMessage = "SAD";
+            string message = "I am in Any Mood";
+            string expectedMessage = "HAPPY";
             string actualMessage = mood.analyseMood(message);
             Assert.AreEqual(expectedMessage, actualMessage);
         }
