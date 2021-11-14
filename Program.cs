@@ -6,7 +6,8 @@ namespace MoodAnalyzerProblem
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Welcome To Mood Analyzer Problem");
+            MoodAnalyzer moodAnalyzer = new MoodAnalyzer();
+            Console.WriteLine(moodAnalyzer.analyseMood("I am in Sad Mood"));
         }
     }
 }
