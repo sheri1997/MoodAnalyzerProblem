@@ -28,7 +28,7 @@ namespace MoodAnalyzerProblem
             }
             catch(NullReferenceException ex)
             {
-                return "HAPPY";
+                throw new CustomException(CustomException.ExceptionType.NUll_Type_Exception, "Message Should Not Be Null");
             }
         }
     }
