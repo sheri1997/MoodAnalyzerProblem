@@ -9,10 +9,11 @@ namespace MoodAnalyzerMSTest
         [TestMethod]
         public void TestMethod1()
         {
-            MoodAnalyzer mood = new MoodAnalyzer();
-            string message = "I am in Any Mood";
-            string expectedMessage = "HAPPY";
-            string actualMessage = mood.analyseMood(message);
+            
+            string message = "I am in Sad Mood";
+            string expectedMessage = "SAD";
+            MoodAnalyzer mood = new MoodAnalyzer(message);
+            string actualMessage = mood.analyseMood();
             Assert.AreEqual(expectedMessage, actualMessage);
         }
     }
